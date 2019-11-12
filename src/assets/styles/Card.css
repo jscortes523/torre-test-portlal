@@ -1,0 +1,36 @@
+.card-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-color: gray;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+}
+
+.card-content{
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+    
+}
+
+.card-content div{
+    width:120px;
+    align-self: flex-start;
+}
+
+.card-content_header{
+    font-size: 12px;
+}
+
+.card-content_meta{
+    color: gray;
+    font-size: 10px;
+}
+
+.card_img{
+    width: 60px;
+    height: 60px;
+}

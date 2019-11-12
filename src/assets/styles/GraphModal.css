@@ -1,0 +1,48 @@
+.modal-container {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  .modal-container_header{
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+  }
+
+  .modal-title{
+      grid-column-start: 2;
+      grid-column-end: 2;
+  }
+
+  .modal-container_detail {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    overflow: auto;
+    width: 80%;
+  }
+
+  /* The Close Button */
+  .modal-container_close-btn {
+      grid-column-start: 3;
+
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 230px;
+  }
+  
+  .modal-container_close-btn:hover,
+  .modal-container_close-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
