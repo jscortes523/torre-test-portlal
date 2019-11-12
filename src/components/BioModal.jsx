@@ -9,17 +9,20 @@ class BioModal extends Component{
         super()
         this.state = {
             show:false,
+            loading:false,
             bio:{},
             connections:[]
         }
         this.handleClose = this.handleClose.bind(this)
-        this.onBioChange = this.onBioChange.bind(this)        
-        bioStore.addChangeListener(BioConstants.GET_BIO_DETAIL,this.onBioChange)
+        this.onBioChange = this.onBioChange.bind(this)     
+        this.onLoading = this.onLoading.bind(this)   
+        bioStore.addChangeListener(BioConstants.GET_BIO_DETAIL,this.onBioChange)        
+        bioStore.addChangeListener(BioConstants.LOADING_BIO,this.onLoading) 
     }
 
     componentWillUnmount(){
         bioStore.removeListener(BioConstants.GET_BIO_DETAIL,this.onBioChange)
-    }
+    }    
 
     componentDidMount(){
         //this.onChange()
@@ -29,9 +32,16 @@ class BioModal extends Component{
         this.setState({
             bio:bioStore.getBio(),
             connections:bioStore.getConnections(),
+            loading:false,
             show:true
         })
 
+    }
+
+    onLoading(){
+        this.setState({
+            loading:true
+        })
     }
 
     handleClose(){
@@ -44,6 +54,9 @@ class BioModal extends Component{
     render(){
         return (
             <React.Fragment>
+                <div className="modal" style={{display: this.state.loading ? 'block' : 'none' }}>
+                   <h1 style={{color:'white'}}> Loading...</h1>
+                </div>
                 {this.state.bio.person &&
                     <div className="modal" style={{display: this.state.show ? 'block' : 'none' }}>
                         <div className="modal-content">
@@ -52,7 +65,7 @@ class BioModal extends Component{
                             </div>
                             <div className="modal_detail_header" >
                                 <div className="modal_detail_img-container">
-                                    <img className="modal_detail__img" src={this.state.bio.person.picture} alt="Bio"/>
+                                    <img className="modal_detail__img" src={this.state.bio.person.picture}/>
                                 </div>
                                 <div className="modal_detail__info">
                                     <h1 className="modal_detail__h5">{this.state.bio.person.name}</h1>

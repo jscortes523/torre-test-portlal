@@ -15,20 +15,30 @@ class GraphModal extends Component{
                 nodes:[],
                 links:[]
             },
-            show:false
+            show:false,
+            loading:false
         }
 
         this.handleClose = this.handleClose.bind(this)
         this.onDisplay = this.onDisplay.bind(this)
+        this.onLoadingGraph = this.onLoadingGraph.bind(this)
 
         bioStore.addChangeListener(BioContants.GET_CONNECTIONS_BY_USER,this.onDisplay)
+        bioStore.addChangeListener(BioContants.LOADING_GRAPH,this.onLoadingGraph)
     }
 
     componentWillUnmount(){
         bioStore.removeListener(BioContants.GET_CONNECTIONS_BY_USER,this.onDisplay)
     }
 
+    onLoadingGraph(){
+        this.setState({
+            loading:true
+        })
+    }
+
     onDisplay(){
+
         const {
             username,
             data
@@ -79,7 +89,8 @@ class GraphModal extends Component{
                 nodes:[...this.state.data.nodes, ...nodes],
                 links:[...this.state.data.links, ...links]
             },
-            show:true
+            show:true,
+            loading:false
         })
     }
 
@@ -115,7 +126,11 @@ class GraphModal extends Component{
 
     render(){
         return (
-            <div className="modal-container" style={{display: this.state.show ? 'block' : 'none' }}>                
+            <React.Fragment>
+            <div className="modal" style={{display: this.state.loading ? 'block' : 'none' }}>
+                <h1 style={{color:'white'}}> Loading...</h1>
+             </div>
+             <div className="modal-container" style={{display: this.state.show ? 'block' : 'none' }}>                
                 <div className="modal-container_detail" >
                 <div className="modal-container_header">
                     <h3 className="modal-title">Top Connections (Click on nodes)</h3>
@@ -133,7 +148,7 @@ class GraphModal extends Component{
                 </div>
                 </div>
             </div>
-                
+            </React.Fragment>
         )
     }
 

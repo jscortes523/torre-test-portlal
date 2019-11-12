@@ -33,4 +33,5 @@
 .card_img{
     width: 60px;
     height: 60px;
+    background: url(https://api.adorable.io/avatars/60/placeholder@adorable.io.png) no-repeat scroll 0 0;;
 }

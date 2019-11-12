@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios'
 import '../assets/styles/Search.css'
 
-class Search extends Component {
+class Search   extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,16 +23,24 @@ class Search extends Component {
     
     this.setState(
       {
-        word:value
+        word:value,
       }
     )
 
-    if(this.state.word.length > 2){
+    if(this.state.word.length > 1){
+      this.setState({
+        loading:true
+      })
       console.log('axios')
       const url = `${process.env.REACT_APP_API_URL}/search?word=${value}`
 
       axios.get(url)
-        .then( res => this.props.addBios(res.data))   
+        .then( res => {
+          this.props.addBios(res.data)
+          this.setState({
+            loading:false
+          })
+        })   
     }
 
   };
@@ -47,7 +55,8 @@ class Search extends Component {
     return (
       <React.Fragment>
         <div className="search">
-          <h6 className="search_title">Search a Bio</h6>
+          <h6 className="search_title">{this.state.loading ? `Loading...` : 'Search a Bio'            
+            }</h6>
             <input
               onChange={this.handleFieldChange}
               value={this.state.word}
@@ -63,4 +72,4 @@ class Search extends Component {
   }
 }
 
-export default Search
+export default Search 

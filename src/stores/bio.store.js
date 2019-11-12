@@ -3,6 +3,21 @@ import BioConstants from '../constants/bio.constants'
 import {EventEmitter} from 'events'
 
 
+let loading = true
+
+
+const setLoading = (load) =>{
+    loading = load
+}
+
+let loadingGraph = true
+
+
+const setLoadingGraph = (load) =>{
+    loadingGraph = load
+}
+
+
 let bio = {}
 
 const setBio = (data) =>{
@@ -60,6 +75,13 @@ class BioStore extends EventEmitter{
         return bios.length > 0
     }
 
+    loading(){
+        return loading
+    }
+
+    loadingGraph(){
+        return loadingGraph
+    }
 }
 
 const store = new BioStore()
@@ -73,6 +95,10 @@ store.dispatchToken = AppDispatcher.register( action  => {
         setConnections(action.payload.connections)
         break;
         case BioConstants.GET_CONNECTIONS_BY_USER: setUserConnections(action.payload)
+        break;
+        case BioConstants.LOADING_BIO: setLoading(action.payload)
+        break;
+        case BioConstants.LOADING_GRAPH: setLoadingGraph(action.payload)
         break;
         default: return;
     }

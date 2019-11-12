@@ -23,6 +23,13 @@ const getData = ( word, limit )=>{
 
 }
 
+const loading = (action) =>{
+    AppDispatcher.dispatch({
+        actionType:action,
+        payload: true
+    })
+}
+
 const getBioData = (username) =>{
 
     const urlBio = `${process.env.REACT_APP_API_URL}/bio/${username}`   
@@ -47,7 +54,6 @@ const getBioData = (username) =>{
             }
         })
     })
-
 }
 
 const getConnectionsByUsername = (username) =>{
@@ -80,9 +86,15 @@ export const getBios = (word,limit) =>{
 }
 
 export const getBioDetail = (username) => {
-    getBioData(username)
+   getBioData(username)
 }
 
 export const getConnections = (username) => {
-    getConnectionsByUsername(username)
+   
+   getConnectionsByUsername(username)
+
+}
+
+export const startLoading = (action) => {
+    loading(action)
 }

@@ -87,6 +87,7 @@
   .modal_detail__img{
      width: 150px;
      height: 170px;
+     background: url(https://api.adorable.io/avatars/150/placeholder@adorable.io.png);
   }
   
   /* The Close Button */
