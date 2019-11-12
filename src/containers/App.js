@@ -30,7 +30,7 @@ class App extends Component {
 
   loadInitialState(){
 
-    const query = '?word=ana&limit=20'
+    const query = '?word=juan&limit=20'
     const url = `${process.env.REACT_APP_API_URL}/search${query}`
 
     axios.get(url).then( res => {
