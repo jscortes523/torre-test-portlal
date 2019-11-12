@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios'
 import '../assets/styles/Search.css'
 
-class PostForm extends Component {
+class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,4 +63,4 @@ class PostForm extends Component {
   }
 }
 
-export default PostForm
+export default Search

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import BioList from '../components/BioList'
 import Search from '../components/Search'
 import BioModal from '../components/BioModal'
+import GraphModal from '../components/GraphModal'
 import '../assets/styles/App.css'
 import axios from 'axios'
 
@@ -51,11 +52,9 @@ class App extends Component {
       <div className="App container bg-light shadow">
         <header className="App-header">
           <h1 className="App-title">
-              Torre Lite
-            <span className="px-2" role="img" aria-label="Chat">
-              💬
-            </span>
+              Torre Lite              
           </h1>
+          <img src="https://img.icons8.com/dusk/64/000000/network.png" alt="Icon"/>
         </header>        
         <div className="app-bio-container">
           <div className="app-search">            
@@ -66,6 +65,7 @@ class App extends Component {
           </div>
         </div>
         <BioModal />
+        <GraphModal/>
       </div>
     )
   }

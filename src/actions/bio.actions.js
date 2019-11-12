@@ -25,13 +25,20 @@ const getData = ( word, limit )=>{
 
 const getBioData = (username) =>{
 
-    const url = `${process.env.REACT_APP_API_URL}/bio/${username}`   
+    const urlBio = `${process.env.REACT_APP_API_URL}/bio/${username}`   
+    const urlConn = `${process.env.REACT_APP_API_URL}/heavy/people/${username}`   
+    axios(urlBio).then( res => {
 
-    axios(url).then( res => {
-        AppDispatcher.dispatch({
-            actionType:BioConstants.GET_BIO_DETAIL,
-            payload: res.data
-        })
+        axios.get(urlConn).then( response => {
+            AppDispatcher.dispatch({
+                actionType:BioConstants.GET_BIO_DETAIL,
+                payload: {
+                    bio:res.data,
+                    connections:response.data
+                }
+            })
+        } )
+        
     }).catch( err => {
         AppDispatcher.dispatch({
             actionType:BioConstants.error,
@@ -45,12 +52,15 @@ const getBioData = (username) =>{
 
 const getConnectionsByUsername = (username) =>{
 
-    const url = `${process.env.REACT_APP_API_URL}/bio/${username}`   
+    const url = `${process.env.REACT_APP_API_URL}/connections?username=${username}`   
 
     axios(url).then( res => {
         AppDispatcher.dispatch({
-            actionType:BioConstants.GET_BIO_DETAIL,
-            payload: res.data
+            actionType:BioConstants.GET_CONNECTIONS_BY_USER,
+            payload:{
+                username:res.data.current,
+                data: res.data.data
+            }
         })
     }).catch( err => {
         AppDispatcher.dispatch({

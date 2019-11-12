@@ -1,0 +1,123 @@
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    display: flex;
+    align-content: center;
+    justify-items: center;
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  .modal-content{
+    margin: auto;
+    justify-content: center;
+    background-color: #fefefe;
+    border: 1px solid #888;
+    width: 70%;
+    height: inherit;
+    overflow: auto;
+  }
+
+  .modal_detail_header {    
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+  }
+
+  .modal_detail__info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+  }
+
+  .modal_detail__info h1{
+    margin-top: 0px;
+    margin-bottom: 5px;
+  }
+
+  .modal_detail__info h5{
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+
+  .modal_detail__tags{
+    height: 15;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 5px;
+  }
+
+  .label{
+    color: white;
+    padding: 2px;
+    margin: 2px;
+    font-size: 10px;
+    font: bold;
+  }
+
+
+  .strengths{
+    background-color: #2196F3;
+  }
+
+  .languages{
+    background-color: #4CAF50;
+  }
+
+  .line_separator{
+    color: gray;
+    size: 1px;
+  }
+
+  .modal_detail_img-container{
+    align-self: auto;
+    margin-top: 15px;
+    align-items: stretch;
+  }
+
+  .modal_detail__img{
+     width: 150px;
+     height: 170px;
+  }
+  
+  /* The Close Button */
+  .modal_close-btn {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+  }
+  
+  .modal_close-btn:hover,
+  .modal_close-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.network{
+  height: inherit;
+}
+
+.cards-container{
+  display: grid;
+  margin-left: 10px;
+  margin-right: 10px;
+  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: 70px;
+}
