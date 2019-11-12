@@ -41,7 +41,7 @@ class Bio extends Component {
           </div>
         <div className="bio-container_actions">
             <button id="bio-detail" className="bio-container_actions__btn_losser" type="button" onClick={this.showBioModal}>View Detail</button>
-            <button id="connections" className="bio-container_actions__btn_winner" type="button" onClick={this.showGraphModal}>Tree</button>
+            <button id="connections" className="bio-container_actions__btn_winner" type="button" onClick={this.showGraphModal}>Graph</button>
         </div>
         </div>
     )
