@@ -118,7 +118,7 @@ class GraphModal extends Component{
             <div className="modal-container" style={{display: this.state.show ? 'block' : 'none' }}>                
                 <div className="modal-container_detail" >
                 <div className="modal-container_header">
-                    <h3 className="modal-title">Top Connections</h3>
+                    <h3 className="modal-title">Top Connections (Click on nodes)</h3>
                     <span className="modal-container_close-btn" onClick={this.handleClose}>&times;</span>
                 </div>
                 <div>
